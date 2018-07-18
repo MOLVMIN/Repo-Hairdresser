@@ -1,0 +1,55 @@
+<!--pages/storetemplete/storetemplete.wxml-->
+<template name="storetemplete">
+  <!--<view class="main-container">
+        <view class="main-tab-container">
+            <view class="main-tab">
+                <view bindtap="tabEvent" data-tab="left" class="{{currentTab == 'left' ? 'tab-left-selected':'tab-left'}}">理发店</view>
+                <view bindtap="tabEvent" data-tab="right" class="{{currentTab == 'right' ? 'tab-right-selected':'tab-right'}}">发型师</view>
+            </view>
+        </view>-->
+  <view class="store-list-container">
+    <view class="store-list" wx:for="{{storeList}}">
+      <view class="store-list-item">
+        <view class="title">
+          <text class="store-name">{{item.name}}</text>
+          <view class="more" data-id='{{item.id}}' data-title="{{item.name}}" bindtap='stores_detail_info'>
+            <text>点击进入</text>
+            <image src="/imgs/more.png"></image>
+          </view>
+        </view>
+        <view class="store-img-container">
+          <image data-id='{{item.id}}' data-title="{{item.name}}" bindtap='stores_detail_info' src="{{item.imageIds[0]}}"></image>
+          <view class="index-container">
+            <view class="store-status">
+              <view class="fans-container">
+                <view class="fans-count">{{item.fansCount}}</view>
+                <view class="fans">
+                  <image src="/imgs/fans_small.png"></image>
+                  <view>粉丝数</view>
+                </view>
+              </view>
+              <view class="satisfaction-container">
+                <view class="satisfaction-value">{{item.starlevel}}</view>
+                <view class="satisfaction">
+                  <image src="/imgs/satisfaction_small.png"></image>
+                  <view>星级</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="location-container">
+          <view class="location">
+            <image src="/imgs/location.png"></image>
+            <text>{{item.address}}</text>
+          </view>
+          <view class="nav">
+            <view class="distance">{{item.distance}}KM</view>
+            <view class="nav-btn" data-id='{{item.id}}' bindtap="navEvent">导航</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--</view>-->
+</template>

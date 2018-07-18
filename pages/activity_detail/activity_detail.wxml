@@ -1,0 +1,38 @@
+<!--pages/activity_detail/activity_detail.wxml-->
+<view class="main-container">
+  <image class='activity-image' mode='widthFix' src='{{imageId}}'></image>
+  <view class='activity-title'>{{couponsObj.name}}</view>
+
+  <!-- <view class="activity-list" wx:for="{{activityList}}"> -->
+  <view class="activity-list">
+    <view class="activity-item">
+      <view class="activity-info">
+        <view class="coupons-item">
+          <view class="coupons-left">
+            <image src='/imgs/voucher_active.png'></image>
+          </view>
+          <view class="coupons-center">
+            <view class="coupons-title">{{couponsObj.name}}</view>
+            <view class='coupons-price'>抵用金额：{{couponsObj.price}}元</view>
+            <view class="coupons-time">截止时间：{{couponsObj.deadline}}</view>
+          </view>
+          <view wx:if="{{!item.hold}}" class="coupons-right" data-id="{{couponsObj.id}}" bindtap="getCoupon">
+            <view class="remnant">剩余</view>
+            <view class="count">{{couponsObj.remainder}}张</view>
+            <view class="get-btn">领取</view>
+          </view>
+          <view wx:else class="coupons-right" data-id="{{couponsObj.id}}">
+            <view class="remnant">剩余</view>
+            <view class="count">{{couponsObj.remainder}}张</view>
+            <view class="has-get-btn">已领取</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="instr_detail">适用门店：{{couponsObj.shopNameList}}</view>
+  <view class="instr_detail">适合项目：{{couponsObj.itemNameList}}</view>
+  <view class="instr_detail">活动说明：{{couponsObj.conditions}}</view>
+</view>

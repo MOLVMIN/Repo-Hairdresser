@@ -1,0 +1,378 @@
+/* pages/store_detail/store_detail.wxss */
+
+swiper {
+    height: 400rpx;
+    width: 100%;
+}
+
+ swiper-item image {
+    width: 100%;
+    height: 100%;
+} 
+
+.line {
+    height: 20rpx;
+    background: #e9e9e9;
+}
+
+.insertline {
+    height: 5rpx;
+    background: #e9e9e9;
+}
+
+.index-container {
+    z-index: 2;
+    position: absolute;
+    right: 30rpx;
+    bottom: 20rpx;
+}
+
+.store {
+    background: #fff;
+    padding: 20rpx;
+    padding-bottom: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.store-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.store-base-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+    width: 100%;
+}
+
+.store-base-info-top {
+    display: flex;
+    height: 80rpx;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.store-base-info-bottom {
+    height: 60rpx;
+    align-items: center;
+}
+
+.store-base-info-bottom view {
+    color: #9a9a9a;
+    font-size: 28rpx;
+    padding-bottom: 10rpx;
+}
+
+.store-name {
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.focus-btn {
+    margin: 0 20rpx;
+    height: 60rpx;
+    padding: 0 30rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: #bf9e4d;
+    border: 1rpx solid #bf9e4d;
+    border-radius: 8rpx;
+    font-size: 36rpx;
+}
+
+.store-status {
+    display: flex;
+}
+
+.fans-container, .satisfaction-container {
+    width: 120rpx;
+    height: 110rpx;
+    vertical-align: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.fans-container {
+    background: #cb9e29;
+}
+
+.satisfaction-container {
+    background: #d9ba6a;
+}
+
+.fans, .satisfaction {
+    display: flex;
+    flex: 3;
+    align-items: center;
+}
+
+.fans-count, .satisfaction-value {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48rpx;
+}
+
+.fans view, .satisfaction view {
+    font-size: 28rpx;
+}
+
+.fans image, .satisfaction image {
+    width: 20rpx;
+    height: 20rpx;
+}
+
+.location-container {
+    background: #fff;
+    padding: 20rpx 10rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    width: 12rem;
+}
+
+.location view {
+    /* overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap; */
+    width: 10rem;
+    font-size: 28rpx;
+    color: #9a9a9a;
+    margin-left: 20rpx;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.location image {
+    width: 31rpx;
+    height: 39rpx;
+    margin-left: 20rpx;
+}
+
+.distance {
+    font-size: 30rpx;
+    color: #9a9a9a;
+    margin-left: 20rpx;
+}
+
+.nav-btn {
+    margin: 0 20rpx;
+    height: 60rpx;
+    width: 120rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: #bf9e4d;
+    border: 1rpx solid #bf9e4d;
+    border-radius: 8rpx;
+    font-size: 36rpx;
+}
+
+.hairdresser-list-item {
+    background: #e9e9e9;
+    padding: 10rpx 0rpx;
+}
+
+.hairdresser {
+    background: #fff;
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hairdresser-info {
+    display: flex;
+    align-items: center;
+}
+
+.hairdresser image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+}
+
+.base-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+}
+
+.base-info-top, .base-info-bottom {
+    display: flex;
+    height: 60rpx;
+    align-items: center;
+}
+
+.hairdresser-name {
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.hairdresser-location {
+    color: #9a9a9a;
+    font-size: 32rpx;
+    margin-left: 20rpx;
+}
+
+.bottom-left, .bottom-right {
+    display: flex;
+    align-items: center;
+    color: #9a9a9a;
+    font-size: 32rpx;
+}
+
+.bottom-left text, .bottom-right text {
+    margin-left: 10rpx;
+}
+
+.bottom-right {
+    margin-left: 20rpx;
+}
+
+.bottom-left image, .bottom-right image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.apply-btn {
+    margin-left: 20rpx;
+    height: 60rpx;
+    width: 120rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: #bf9e4d;
+    border: 1rpx solid #bf9e4d;
+    border-radius: 8rpx;
+    font-size: 36rpx;
+}
+
+.wait-status {
+    text-align: center;
+    color: #bf9e4d;
+    padding: 20rpx;
+    background: #fff;
+    font-size: 32rpx;
+}
+
+.evaluate-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx;
+}
+
+.evaluate-title-left {
+    font-weight: bold;
+}
+
+.evaluate-Satisfaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.evaluate-Satisfaction image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.evaluate-Satisfaction text {
+    font-size: 30rpx;
+    color: #9a9a9a;
+    margin-left: 10rpx;
+}
+
+.evaluate-content {
+    background: #fff;
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.evaluate-content image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+}
+
+.evaluate-content-info {
+    display: flex;
+    align-items: center;
+}
+
+.evaluate-base-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+}
+
+.evaluate-base-info-top {
+    display: flex;
+    height: 60rpx;
+    align-items: center;
+}
+
+.evaluate-base-info-bottom {
+    color: #9a9a9a;
+    font-size: 30rpx;
+}
+
+.evaluate-name {
+    font-size: 30rpx;
+    /* font-weight: 700; */
+}
+
+.start_level {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.start_level image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.start_level text {
+    color: #9a9a9a;
+    margin-left: 20rpx;
+    font-size: 30rpx;
+}
+
+.evaluate-text {
+    padding: 15rpx 30rpx;
+    /* color: #9a9a9a; */
+    font-size: 30rpx;
+    word-break: break-all;
+}
+
+.eva-avatar image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.store-list {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.middle-line {
+  height: 5rpx;
+  background: #e9e9e9;
+}

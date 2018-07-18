@@ -1,0 +1,30 @@
+<!--pages/my_focus/my_focus.wxml-->
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">理发店</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">发型师</view>
+</view> 
+
+<view wx:if="{{currentTab==0}}" class="store-list">
+    <view class="store-item" wx:for="{{storeList}}" data-id="{{item.id}}" data-path='{{item.imageId}}' catchtap='gotoStore'>
+        <view class="baseInfo">
+            <!-- <view class="avatar-container">
+                <image src="{{item.imageId}}"></image>
+            </view> -->
+            <view class="name">{{item.name}}</view>
+        </view>
+        <view data-id="{{item.id}}" catchtap="ctStoreEvent" class="focus-btn">取消关注</view>
+    </view>
+</view>
+
+
+<view wx:if="{{currentTab==1}}" class="store-list">
+    <view class="store-item" wx:for="{{hairdresserList}}" data-id="{{item.id}}" data-path='{{item.imageId}}' catchtap='gotoHairdresser'>
+        <view class="baseInfo">
+            <view class="avatar-container">
+                <image src="{{item.imageId}}"></image>
+            </view>
+            <view class="name">{{item.name}}</view>
+        </view>
+        <view data-id="{{item.id}}" catchtap="ctHairdressersEvent" class="focus-btn">取消关注</view>
+    </view>
+</view>

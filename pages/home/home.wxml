@@ -1,0 +1,35 @@
+<!--pages/home/home.wxml-->
+<import src="/pages/storetemplete/storetemplete.wxml" />
+<import src="/pages/hairdressertemplete/hairdressertemplete.wxml" />
+<view class="main-container">
+  <view class="search-container">
+    <text class="iconfont icon-wxbsousuotuiguang"></text>
+    <input bindinput="searchEvent" placeholder="查询理发店或发型师" />
+  </view>
+  <view class="main-tab-container">
+    <view class="main-tab">
+      <view class='tab-btn' bindtap="tabEvent" data-tab="left">
+        <image src='{{couponsImage}}' class="tab-image"></image>
+        <view class='tab-text'>优惠券</view>
+      </view>
+      <view class='tab-btn' bindtap="tabEvent" data-tab="middle">
+        <image src='{{storeImage}}' class="tab-image"></image>
+        <view class='tab-text'>理发店</view>
+      </view>
+      <view class='tab-btn' bindtap="tabEvent" data-tab="right">
+        <image src='{{hairImage}}' class="tab-image"></image>
+        <view class='tab-text'>发型师</view>
+      </view>
+    </view>
+  </view>
+  <template is="{{currentTab == 'middle' ? 'storetemplete' : ''}}" data="{{storeList: storeList}}"></template>
+  <template is="{{currentTab == 'right' ? 'hairdressertemplete' : ''}}" data="{{hairdresserList: hairdresserList}}"></template>
+
+</view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">请授权获取用户信息</view>
+  <button class="btn-confirm" open-type="getUserInfo" bindgetuserinfo="getWxInfo">授权</button> 
+</view>

@@ -1,0 +1,201 @@
+/* pages/home/home.wxss */
+@import "/pages/storetemplete/storetemplete.wxss";
+@import "/pages/hairdressertemplete/hairdressertemplete.wxss";
+
+html, page, .main-container {
+  height: 100%;
+  background: #e9e9e9;
+}
+
+/* .main-tab-container, .main-tab {
+     display: flex;
+    justify-content: center;
+    align-items: center; 
+} */
+
+.main-tab {
+  padding-top: 15rpx;
+  height: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .tab-left, .tab-right {
+    text-align: center;
+    width: 250rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #FFFFFF;
+    color: #9A9A9A;
+    font-weight: 600;
+}
+.tab-left-selected, .tab-right-selected {
+    text-align: center;
+    width: 250rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #CB9E29;
+    color: #000000;
+    font-weight: 600;
+}
+.tab-left, .tab-left-selected {
+    border-radius: 20rpx 0 0 20rpx;
+}
+.tab-right, .tab-right-selected {
+    border-radius: 0 20rpx 20rpx 0;
+} */
+
+.tab-btn {
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-image {
+  padding-left: 35rpx;
+  padding-right: 35rpx;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.tab-text {
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}
+
+.search-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  margin-top: 20rpx;
+  margin-left: 5%;
+  border-radius: 10rpx;
+}
+
+.search-container text {
+  margin-left: 20rpx;
+}
+
+.search-container input {
+  background: #fff;
+  padding: 10rpx 0 10rpx 20rpx;
+  color: #9a9a9a;
+  width: 95%;
+}
+
+.search {
+  width: 60rpx;
+  border: 1px solid;
+}
+
+@font-face {
+  font-family: 'iconfont'; /* project id 527049 */
+  src: url('//at.alicdn.com/t/font_527049_6jpcjm1j8qcl3di.eot');
+  src: url('//at.alicdn.com/t/font_527049_6jpcjm1j8qcl3di.eot?#iefix') format('embedded-opentype'),
+         url('//at.alicdn.com/t/font_527049_6jpcjm1j8qcl3di.woff') format('woff'),
+         url('//at.alicdn.com/t/font_527049_6jpcjm1j8qcl3di.ttf') format('truetype'),
+         url('//at.alicdn.com/t/font_527049_6jpcjm1j8qcl3di.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wxbsousuotuiguang:before {
+  content: "\e620";
+}
+
+
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 30rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+  position:initial;
+  font-size: 16px;
+}

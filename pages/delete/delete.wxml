@@ -1,0 +1,61 @@
+<!--pages/delete/delete.wxml-->
+<template name = "deleteT">
+  <view wx:for="{{deleteList}}"> 
+
+  <view class="line"></view>
+  <view>
+    <view class="list-item-container">
+      <view class='list-item-container-content'>预约发型师</view>
+      <view class='master'>
+        <image src="{{item.imagePath}}"></image>
+        <text>{{item.hairdresserName}}</text>
+      </view>
+    </view>
+
+    <view class='list-item-container'>
+      <view>预约门店</view>
+      <view>{{item.shopName}}</view>
+    </view>
+
+
+    <view class='list-item-container'>
+      <view>预约电话</view>
+      <view>{{item.phone}}</view>
+    </view>
+
+
+    <view class='list-item-container'>
+      <view>预约项目</view>
+      <view>{{item.itemlist}}</view>
+    </view>
+
+    <view class='list-item-container'>
+      <view>预约时间</view>
+      <view>{{item.mkTime}}</view>
+    </view>
+
+
+    <!-- <view class='list-item-container'>
+      <view>到店时间</view>
+      <view>{{item.arrvilTime}}</view>
+    </view>
+
+    <view class='list-item-container'>
+      <view>取消时间</view>
+      <view>{{item.arrvilTime}}</view>
+    </view> -->
+
+    <view class="smallestLine"></view>
+
+    <view class='comlete-select-container'>
+      <view></view>
+      <view class='balance-right'>
+        <view class="cancle-btn" data-id="{{item.id}}" bindtap='cancleOrderDeleteTapEvent'>删除</view>
+      </view>
+    </view>
+
+  </view>
+
+  </view>
+</template>
+

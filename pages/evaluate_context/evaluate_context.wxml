@@ -1,0 +1,66 @@
+<!--pages/evaluate_context/evaluate_context.wxml-->
+<view class='main'>
+
+<view class="main-list">
+<view class='Line'></view>
+
+<view class='context'>
+  <view class='store_title'>
+    <view class='store_title_left'>门店评价</view>
+    <view class='store_title_right'>{{shopName}}</view>
+  </view>
+
+  <view class='smallLine'></view>
+
+  <textarea class='store_text' placeholder='亲！请留下您的评价，下次为你提供更优质的服务。。。' type="text" bindinput="shopCommentInput" />
+
+  <view class='smallLine'></view>
+
+  <view class='store_end'>
+    <view class='store_end_left'>门店满意度</view>
+    <view class='store_score'>
+      <view wx:for="{{shopStarLevelList}}">
+        <image src='{{item}}' data-index="{{index}}" bindtap="shopStarEvent"></image>
+      </view>
+      <text>{{shopMark}}分</text>
+    </view>
+  </view>
+</view>
+
+<view class='Line'></view>
+
+<view class='context'>
+  <view class='hair_title'>
+    <view class='hair_title_left'>发型师评价</view>
+    <view class='master'>
+        <!-- <image src="{{hairImagePath}}"></image> -->
+        <text>{{hairName}}</text>
+      </view>
+  </view>
+
+  <view class='smallLine'></view>
+
+  <textarea class='store_text' placeholder='亲！请留下您的评价，下次为你提供更优质的服务。。。' type="text" bindinput="hairCommentInput" />
+
+  <view class='smallLine'></view>
+
+  <view class='hair_end'>
+    <view class='hair_end_left'>发型师满意度</view>
+    <view class='hair_score'>
+      <view wx:for="{{hairStarLevelList}}">
+        <image src='{{item}}' data-index="{{index}}" bindtap="hairStarEvent"></image>
+      </view>
+      <text>{{hairMark}}分</text>
+    </view>
+  </view>
+</view>
+
+</view>
+
+
+
+
+<view class='completeBtn' bindtap="commitEvent">完成评价</view>
+
+
+</view>

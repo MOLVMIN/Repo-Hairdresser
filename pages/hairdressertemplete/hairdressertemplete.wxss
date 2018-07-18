@@ -1,0 +1,75 @@
+/* pages/hairdressertemplete/hairdressertemplete.wxss */
+.hairdresser-list-item {
+    background: #E9E9E9;
+    padding: 10rpx;
+}
+.hairdresser {
+    background: #FFFFFF;
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #E9E9E9;
+}
+.hairdresser-info {
+    display: flex;
+    align-items: center;
+}
+.hairdresser image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+}
+.base-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+}
+.base-info-top, .base-info-bottom {
+    display: flex;
+    height: 60rpx;
+    align-items: center;
+}
+.hairdresser-name {
+    font-size: 34rpx;
+    font-weight: 700;
+}
+.hairdresser-location {
+    color: #9A9A9A;
+    font-size: 32rpx;
+    margin-left: 20rpx;
+}
+.bottom-left, .bottom-right {
+    display: flex;
+    align-items: center;
+    color: #9A9A9A;
+    font-size: 32rpx;
+}
+.bottom-left text, .bottom-right text {
+    margin-left: 10rpx; 
+}
+.bottom-right {
+    margin-left: 20rpx;
+}
+.bottom-left image, .bottom-right image {
+    width: 30rpx;
+    height: 30rpx;
+}
+.apply-btn {
+    margin-left: 20rpx;
+    height: 60rpx;
+    width: 120rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: #BF9E4D;
+    border: 1rpx solid #BF9E4D;
+    border-radius: 8rpx;
+    font-size: 36rpx;
+}
+.wait-status {
+    text-align: center;
+    color: #BF9E4D;
+    padding: 20rpx;
+    background: #FFFFFF;
+    font-size: 32rpx;
+}

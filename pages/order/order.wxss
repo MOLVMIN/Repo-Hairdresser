@@ -1,0 +1,277 @@
+/* pages/order/order.wxss */
+
+html, page, .main-container {
+  background: #e9e9e9;
+}
+
+.main-container {
+  margin-bottom: 150rpx;
+}
+
+.line {
+  height: 30rpx;
+  background: #e9e9e9;
+}
+
+.smallLine {
+  height: 5rpx;
+  background: #e9e9e9;
+}
+
+.info {
+  background-color: #fff;
+  padding: 0 30rpx 30rpx 30rpx;
+}
+
+.more_img {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+
+.flex_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.row_item {
+  padding: 30rpx 20rpx;
+  background: #fff;
+}
+
+.order_row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+checkbox-group {
+  padding: 20rpx;
+}
+
+.checkbox {
+  padding-top: 10rpx;
+}
+
+.item_bold {
+  font-weight: bold;
+}
+
+.item_gray {
+  font-size: 30rpx;
+  color: #9a9a9a;
+}
+
+.item_yellow {
+  color: #f17728;
+  font-weight: bold;
+}
+
+.item_time {
+  width: 400rpx;
+}
+
+.item_yellow_nobold {
+  font-size: 28rpx;
+  color: #f17728;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.item_marginLeft {
+  margin-left: 10rpx;
+}
+
+.result {
+  padding: 30rpx 50rpx;
+}
+
+.commitBtn {
+  background-color: #d9ba6a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 120rpx;
+  width: 100%;
+  line-height: 120rpx;
+  text-align: center;
+}
+
+.item-list {
+  margin: 20rpx;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e9e9e9;
+  padding: 20rpx 0;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+}
+
+.item-price {
+  color: #f17728;
+}
+
+.item-info image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.item-info view {
+  margin-left: 20rpx;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  background: #fff;
+  border: 2rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+}
+
+.appointment-item-time {
+  width: 100%;
+  display: inline-block;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx;
+  white-space: nowrap;
+}
+
+.appointment-item {
+  text-align: center;
+  display: inline-block;
+  font-size: 32rpx;
+  padding: 20rpx;
+}
+
+.appointment-item-checked {
+  text-align: center;
+  display: inline-block;
+  font-size: 32rpx;
+  color: #f17728;
+  padding: 20rpx;
+  border-bottom: 2rpx solid #f17728;
+}
+
+.time-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time-item-container {
+  border: 1rpx solid #e9e9e9;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+
+.time-item-container-checked {
+  border: 4rpx solid #d9ba6a;
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+
+.time-item {
+  text-align: center;
+  color: #9a9a9a;
+}
+
+.time-item-can {
+  color: #48c23d;
+  text-align: center;
+}

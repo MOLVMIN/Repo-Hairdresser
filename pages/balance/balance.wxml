@@ -1,0 +1,78 @@
+<!--pages/balance/balance.wxml-->
+<view class='main-container'>
+
+  <!-- <view class='info flex_row row_item2'>
+    <view class='item_bold'>支付剩余时间：</view>
+    <view class='item_time'>{{remainTime}}</view>
+  </view> -->
+
+  <view class='line'></view>
+
+  <view class='info flex_row row_item2'>
+    <view class='item_bold'>付款门店</view>
+    <view class='item_gray'>{{inServiceOrder.shopName}}</view>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='info'>
+    <view class='flex_row row_item'>
+      <view class='item_bold'>服务项目</view>
+      <view class='item_gray'>{{inServiceOrder.itemNames[0]}}</view>
+    </view>
+
+    <view class='smallLine'></view>
+
+    <view class='flex_row row_item'>
+      <view class='item_bold'>发型师</view>
+      <view class='item_gray' wx:if="{{inServiceOrder.hairdresserName}}">{{inServiceOrder.hairdresserName}}</view>
+      <view class='item_gray' wx:else>{{inServiceOrder.hairdressName}}</view>
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <view style='display:{{showCoupons}}' class='info flex_row row_item2' bindtap="selectCouponsEvent">
+    <view class='item_bold'>优惠券</view>
+    <view class='flex_row'>
+      <view class='item_gray' style='{{couponsCodeStyle}}'>{{couponsCode}}</view>
+      <image src='/imgs/more.png' class='more_img'></image>
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='info flex_row row_item2'>
+    <view class='item_bold'>付款方式</view>
+    <view class='flex_row'>
+      <view class='item_gray'>微信支付</view>
+      <!-- <image src='/imgs/more.png' class='more_img'></image> -->
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <view>
+    <view class='info flex_row row_item2'>
+      <view class='item_bold'>商品价格</view>
+      <view class='item_gray' wx:if="{{inServiceOrder.priceValue}}">¥ {{inServiceOrder.priceValue}}</view>
+      <view class='item_gray' wx:else>¥ {{inServiceOrder.price}}</view>
+    </view>
+    <view class='info flex_row row_item2'>
+      <view class='item_bold'>优惠金额</view>
+      <view class='item_gray'>¥ {{couponValue}}</view>
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='info flex_row result'>
+    <view class='item_bold'>小计</view>
+    <view class='item_yellow' wx:if="{{inServiceOrder.priceValue}}">¥ {{inServiceOrder.priceValue - couponValue}}</view>
+    <view class='item_yellow' wx:else>¥ {{inServiceOrder.price - couponValue}}</view>
+  </view>
+
+  <view class='commitBtn' bindtap="payEvent">支付账单</view>
+
+
+</view>

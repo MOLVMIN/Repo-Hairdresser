@@ -1,0 +1,65 @@
+<!--pages/my/my.wxml-->
+
+<import src="/pages/appointment/appointment.wxml" />
+<import src="/pages/in_service/in_service.wxml" />
+<import src="/pages/complete/complete.wxml" />
+<import src="/pages/evaluate/evaluate.wxml" />
+<import src="/pages/delete/delete.wxml" />
+
+<view class="main-container">
+   <view class="base-container">
+    <view class="user-info">
+      <image class="user-info-image" src="{{userInfo.avatarUrl}}"></image>
+       <view class="user-info-text">{{userInfo.nickName}}</view> 
+    </view>
+  </view>  
+
+  <view class="order-container">
+    <view class="my-order">
+      <view class="order-title">我的订单</view>
+      <!-- <view class="more">
+                <text bindtap='payEvent'>查看更多</text>
+                <image src="/imgs/more.png"></image>
+            </view> -->
+      <view bindtap="myFocus" class="focus-btn">我的关注</view>
+    </view>
+    <view class="order-menu">
+      <view class="menu-item" bindtap='appointmentTapEvent'>
+        <image src="/imgs/appointment.png"></image>
+        <text>已支付</text>
+      </view>
+      <!-- <view class="menu-item" bindtap='in_serviceTapEvent'>
+        <image src="/imgs/in_service.png"></image>
+        <text>服务中</text>
+      </view> -->
+      <view class="menu-item" bindtap='completeTapEvent'>
+        <image src="/imgs/complete.png"></image>
+        <text>已核销</text>
+      </view>
+      <view class="menu-item" bindtap='evaluateTapEvent'>
+        <image src="/imgs/evaluate.png"></image>
+        <text>已评价</text>
+      </view>
+      <!-- <view class="menu-item" bindtap='deleteTapEvent'>
+                <image src="/imgs/delete.png"></image>
+                <text>已取消</text>
+            </view> -->
+    </view>
+    <view class="line"></view>
+    <view class="my-voucher" bindtap='couponsTapEvent'>
+      <view class="voucher-container">
+        <view class="voucher-title">优惠券</view>
+        <view class="voucher-count">{{couponsList.length}}</view>
+      </view>
+      <view class="more">
+        <text>查看更多</text>
+        <image src="/imgs/more.png"></image>
+      </view>
+    </view>
+    <template is="{{currentTab == 'appointment' ? 'appointmentT' : ''}}" data="{{appointmentList: appointmentList}}"></template>
+    <template is="{{currentTab == 'in_service' ? 'in_serviceT' : ''}}" data="{{inServiceList: inServiceList}}"></template>
+    <template is="{{currentTab == 'complete' ? 'completeT' : ''}}" data="{{completeList: completeList}}"></template>
+    <template is="{{currentTab == 'evaluate' ? 'evaluateT' : ''}}" data="{{evaluateList: evaluateList}}"></template>
+    <template is="{{currentTab == 'delete' ? 'deleteT' : ''}}" data="{{deleteList: deleteList}}"></template>
+  </view>
+</view>

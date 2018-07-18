@@ -1,0 +1,34 @@
+<!--pages/hairdressertemplete/hairdressertemplete.wxml-->
+<template name="hairdressertemplete">
+  <view class="hairdresser-list-container">
+    <view class="hairdresser-list" wx:for="{{hairdresserList}}">
+      <view class="hairdresser-list-item">
+        <view class="hairdresser" data-id="{{item.id}}" data-path='{{item.imageId}}' bindtap='haires_detail_info'>
+          <view class="hairdresser-info">
+            <view class="avatar">
+              <image src="{{item.imageId}}"></image>
+            </view>
+            <view class="base-info">
+              <view class="base-info-top">
+                <view class="hairdresser-name" style='word-break: break-all'>{{item.name}}</view>
+                <view class="hairdresser-location" style='word-break: break-all'>{{item.shopName}}</view>
+              </view>
+              <view class="base-info-bottom">
+                <view class="bottom-left">
+                  <image src="/imgs/fans_big.png"></image>
+                  <text>粉丝数{{item.fansCount}}</text>
+                </view>
+                <view class="bottom-right">
+                  <image src="/imgs/satisfaction_big.png"></image>
+                  <text>满意度{{item.cmark}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="apply-btn">预约</view>
+        </view>
+        <!-- <view class="wait-status">需要等待{{item.needWaitCount}}人</view> -->
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,187 @@
+/* pages/activity/activity.wxss */
+html, page, .main-container {
+    height: 100%;
+    background: #E9E9E9;
+}
+
+.activity {
+  color: #fff;
+  font-size: 30rpx;
+  font-weight:lighter;
+  position: relative;
+  height: 460rpx;
+  width: 94%;
+  background-size:cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-top: 20rpx;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.activity-brief {
+  margin:auto; 
+  left: 10rpx; top: 10rpx;
+
+  position: absolute;
+  z-index: 98;
+}
+
+.activity-brief-title {
+
+}
+
+.activity-brief-context {
+
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  /* word-break: break-all;  */
+}
+
+.activity-datetime {
+  margin:auto; 
+  right: 10rpx; bottom: 10rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 99;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.activity-name {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+}
+
+.activity-name image {
+    width: 40rpx;
+    height: 40rpx;
+    padding: 20rpx 30rpx;
+}
+
+.activity-time {
+    padding-left: 30rpx;
+    font-size: 32rpx;
+}
+
+.coupons-item {
+    background: #FFFFFF;
+    display: flex;
+    margin: 20rpx 10rpx;
+    position: relative;
+    height: 180rpx;
+}
+.coupons-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20rpx;
+}
+.coupons-left image {
+    width: 100rpx;
+    height: 69rpx;
+}
+.coupons-type {
+    font-size: 30rpx;
+    font-weight: 700;
+    margin: 20rpx 0 10rpx 0;
+    width: 10rem;
+}
+.coupons-content {
+    font-size: 26rpx;
+    color: #A7A7A7;
+    margin: 10rpx 0;
+}
+.coupons-time {
+    font-size: 26rpx;
+    color: #A7A7A7;
+    margin: 10rpx 0 20rpx 0;
+}
+.coupons-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #D9BA6A;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 150rpx;
+}
+.coupons-right-gray {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #A1A1A1;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 150rpx;
+}
+.coupons-right text, .coupons-right-gray text {
+    font-size: 30rpx;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.coupons-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.remnant, .count {
+    color: #FFFFFF;
+    font-size: 32rpx;
+}
+
+.get-btn {
+    padding: 5rpx 20rpx;
+    background: #FFFFFF;
+    color: #D9BA6A;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.has-get-btn {
+    padding: 5rpx 20rpx;
+    background: #E9E9E9;
+    color: #D9BA6A;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.line {
+    width: 100%;
+    height: 5rpx;
+    background: #D8D8D8;
+}

@@ -1,0 +1,60 @@
+<!--pages/InService/in_service.wxml-->
+<template name="in_serviceT">
+  <view wx:for="{{inServiceList}}">
+<view class="line"></view>
+  <view>
+    <view class="list-item-container">
+      <view class='list-item-container-content'>预约发型师</view>
+      <view class='master'>
+        <image src="{{item.imagePath}}"></image>
+        <text>{{item.hairdresserName}}</text>
+      </view>
+    </view>
+
+    <view class='list-item-container'>
+      <view>预约门店</view>
+      <view>{{item.shopName}}</view>
+    </view>
+
+
+    <view class='list-item-container'>
+      <view>预约电话</view>
+      <view>{{item.phone}}</view>
+    </view>
+
+
+    <view class='list-item-container'>
+      <view>预约项目</view>
+      <view>{{item.itemlist}}</view>
+    </view>
+
+    <view class='list-item-container'>
+      <view>预约时间</view>
+      <view>{{item.mkTime}}</view>
+    </view>
+
+
+    <!-- <view class='list-item-container'>
+      <view>到店时间</view>
+      <view>{{item.arrvilTime}}</view>
+    </view>
+
+    <view class='list-item-container'>
+      <view>服务时间</view>
+      <view>{{item.arrvilTime}}</view>
+    </view> -->
+
+    <view class="smallLine"></view>
+
+    <view class='balance-container'>
+      <view class='balance-left'>小计</view>
+      <view class='balance-right'>
+        <view class='balance-text'>{{item.priceValue}}¥</view>
+        <view data-item="{{item}}" class='balance-btn' bindtap='balanceTapEvent'>结算</view>
+      </view>
+    </view>
+
+  </view>
+  </view>
+  
+</template>

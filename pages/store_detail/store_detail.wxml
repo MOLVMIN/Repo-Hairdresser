@@ -1,0 +1,150 @@
+<!--pages/store_detail/store_detail.wxml-->
+<swiper wx:if="{{storeDetail.imagePathList.length > 0}}" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+  <block wx:for="{{storeDetail.imagePathList}}">
+    <swiper-item>
+      <image mode='widthFix' src="{{item}}" class="slide-image" />
+    </swiper-item>
+    <view class="index-container">
+      <view class="store-status">
+        <view class="fans-container">
+          <view class="fans-count">{{storeDetail.fansCount}}</view>
+          <view class="fans">
+            <image src="/imgs/fans_small.png"></image>
+            <view>粉丝数</view>
+          </view>
+        </view>
+        <view class="satisfaction-container">
+          <view class="satisfaction-value">{{storeDetail.starlevel}}</view>
+          <view class="satisfaction">
+            <image src="/imgs/satisfaction_small.png"></image>
+            <view>星级</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</swiper>
+<swiper wx:else indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+  <swiper-item>
+    <image src="/imgs/no_img.jpg" class="slide-image" />
+  </swiper-item>
+  <view class="index-container">
+    <view class="store-status">
+      <view class="fans-container">
+        <view class="fans-count">{{storeDetail.fansCount}}</view>
+        <view class="fans">
+          <image src="/imgs/fans_small.png"></image>
+          <view>粉丝数</view>
+        </view>
+      </view>
+      <view class="satisfaction-container">
+        <view class="satisfaction-value">{{storeDetail.starlevel}}</view>
+        <view class="satisfaction">
+          <image src="/imgs/satisfaction_small.png"></image>
+          <view>星级</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</swiper>
+<view class='line'></view>
+<view class="store">
+  <view class="store-info">
+    <view class="store-base-info">
+      <view class="store-base-info-top">
+        <view class="store-name">{{storeDetail.name}}</view>
+        <view wx:if="{{!storeDetail.isAt}}" bindtap="atEvent" class="focus-btn">关注</view>
+        <view wx:else bindtap="ctEvent" class="focus-btn">取消关注</view>
+      </view>
+      <view class="store-base-info-bottom">
+        <view>营业时间: {{storeDetail.businessHours}}</view>
+        <view>联系电话: {{storeDetail.phone}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='insertline'></view>
+<view class="location-container">
+  <view class="location">
+    <image src="/imgs/location.png"></image>
+    <view>{{storeDetail.address}}</view>
+  </view>
+  <view class="nav">
+    <view class="distance">{{storeDetail.distance}}KM</view>
+    <view class="nav-btn" bindtap="navEvent">导航</view>
+  </view>
+</view>
+<view class='line'></view>
+<view class="hairdresser-list-container">
+  <view class="hairdresser-list" wx:for="{{storeDetail.hairdresser}}">
+    <view class="hairdresser-list-item">
+      <view class="hairdresser" data-hairid='{{item.id}}' catchtap='hairDetailEvent'>
+        <view class="hairdresser-info">
+          <view class="avatar">
+            <image src="{{item.imagePath}}"></image>
+          </view>
+          <view class="base-info">
+            <view class="base-info-top">
+              <view class="hairdresser-name">{{item.name}}</view>
+              <!-- <view class="hairdresser-location">{{item.shopName}}</view> -->
+            </view>
+            <view class="base-info-bottom">
+              <view class="bottom-left">
+                <image src="/imgs/fans_big.png"></image>
+                <text>粉丝数{{item.fansCount}}</text>
+              </view>
+              <view class="bottom-right">
+                <image src="/imgs/satisfaction_big.png"></image>
+                <text>满意度{{item.cmark}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="apply-btn">预约</view>
+      </view>
+      <!-- <view class='insertline'></view>
+      <view class="wait-status">需要等待{{item.needWaitCount}}人，约{{item.needWaitTime}}分钟</view> -->
+    </view>
+  </view>
+</view>
+<view class='line'></view>
+<view>
+  <view class='evaluate-title'>
+    <view class='evaluate-title-left' wx:if="{{evaluateTotleNum != 0}}">评价({{evaluateTotleNum}})</view>
+    <view class='evaluate-title-left' wx:else>暂无评论</view>
+    <view class='evaluate-Satisfaction'>
+      <image src='/imgs/satisfaction_big.png'></image>
+      <text>满意度{{evaluateMarkAv}}%</text>
+    </view>
+  </view>
+  <view class='insertline'></view>
+  <view class="store-list" wx:for="{{evaluateList}}">
+    <view>
+      <view class="evaluate-content">
+        <view class="evaluate-content-info">
+          <view class="eva-avatar">
+            <image src="{{item.avatarImage}}"></image>
+          </view>
+          <view class="evaluate-base-info">
+            <view class="evaluate-base-info-top">
+              <view class="evaluate-name">{{item.creatorNickName}}</view>
+            </view>
+            <!-- <view class="evaluate-base-info-bottom">
+              {{item.phone}}
+            </view> -->
+            <view class="start_level">
+                <image src='{{item.image0}}'></image>
+                <image src='{{item.image1}}'></image>
+                <image src='{{item.image2}}'></image>
+                <image src='{{item.image3}}'></image>
+                <image src='{{item.image4}}'></image>
+                <text>{{item.commitTime}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='evaluate-text'>{{item.comment}}</view>
+    </view>
+    <view class='insertline'></view>
+  </view>
+</view>

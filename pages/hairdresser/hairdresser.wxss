@@ -1,0 +1,7 @@
+/* pages/hairdresser/hairdresser.wxss */
+html, page, .main-continer {
+    
+}
+.main-continer {
+    background: #E9E9E9;
+}

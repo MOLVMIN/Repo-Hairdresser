@@ -1,0 +1,75 @@
+<!--pages/appointment/appointment.wxml-->
+<template name="appointmentT">
+  <view wx:for="{{appointmentList}}">
+
+    <view class="line"></view>
+    <view data-index="{{index}}" bindtap="appointmentItemEvent" class="waiting-container">
+      <view class="waiting-number">
+            <view class="number-text">预约号码：</view> 
+            <view class="number-number">{{item.ordernum}}</view>
+            <!-- <image src="/imgs/more.png"></image> -->
+      </view>
+      <view class="waiting-time">
+        <!-- <view class="number-text">需等待{{item.waitCount}}人</view> -->
+        <!-- <view class="cancle-btn" data-id="{{item.id}}" catchtap="cancleAppointmentEvent">取消</view> -->
+      </view>
+    </view>
+    <view wx:if="{{item.status}}">
+        <view class="list-item-container">
+        <view class='list-item-container-content'>预约发型师</view>
+            <view class='master'>
+                <image src="{{item.imagePath}}"></image>
+                <text>{{item.hairdresserName}}</text>
+            </view>
+        </view>
+        <view class='list-item-container'>
+            <view>预约门店</view>
+            <view>{{item.shopName}}</view>
+        </view>
+
+        <view class='list-item-container'>
+            <view>预约电话</view>
+            <view>{{item.newphone}}</view>
+        </view>
+
+        <view class='list-item-container'>
+            <view>预约项目</view>
+            <view>{{item.itemlist}}</view>
+        </view>
+
+        <view class='list-item-container'>
+            <view>消费原价</view>
+            <view>{{item.priceValue}}</view>
+        </view>
+
+        <view class='list-item-container'>
+            <view>优惠券</view>
+            <view style='color:#f17728'>{{item.couponnum}}</view>
+            <view wx:if="{{item.couponValue}}">{{item.couponValue}}</view>
+            <view wx:else>0</view>
+        </view>
+
+        <view class='list-item-container'>
+            <view>支付费用</view>
+            <view>{{item.pay}}</view>
+        </view>
+        
+         <view class='list-item-container'>
+            <view>预约时间</view>
+            <view>{{item.mkTime}}</view>
+        </view>
+
+        <view class='list-item-container'>
+            <view>核销码</view>
+            <view style='color:red'>{{item.verificode}}</view>
+        </view>
+
+        <!-- <view class='list-item-container'>
+            <view>到达时间</view>
+            <view>{{item.arrvilTime}}</view>
+        </view>  -->
+    </view>
+    </view>
+
+  
+</template>

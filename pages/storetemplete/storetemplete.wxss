@@ -1,0 +1,131 @@
+/* pages/storetemplete/storetemplete.wxss */
+.store-list-item {
+    background: #E9E9E9;
+    padding: 10rpx;
+    height: 590rpx;
+}
+.title {
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx;
+}
+.title text {
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 12rem;
+}
+.store-name {
+    font-weight: 700;
+}
+.more text {
+    font-size: 30rpx;
+    color: #9A9A9A;
+}
+.more image {
+    width: 16rpx;
+    height: 27rpx;
+    margin-left: 20rpx;
+}
+.store-img-container {
+    width: 100%;
+    height: 390rpx;
+    position: relative;
+    
+}
+.store-img-container image {
+    width: 100%;
+    z-index: 1;
+    height: 390rpx;
+    position: absolute;
+}
+
+.index-container {
+    z-index: 2;
+    position: absolute;
+    right: 30rpx;
+    bottom: 20rpx;
+}
+.store-status {
+    display: flex;
+}
+.fans-container, .satisfaction-container {
+    width: 120rpx;
+    height: 110rpx;
+    vertical-align: center;
+    align-items: center;
+    color: #FFFFFF;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.fans-container {
+    background: #CB9E29;
+}
+.satisfaction-container {
+    background: #D9BA6A;
+}
+.fans, .satisfaction {
+    display: flex;
+    flex: 3;
+    align-items: center;
+}
+.fans-count, .satisfaction-value {
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48rpx;
+}
+.fans view, .satisfaction view {
+    font-size: 28rpx;
+    margin-left: 20rpx;
+}
+.fans image, .satisfaction image {
+    width: 20rpx;
+    height: 20rpx;
+}
+
+
+.location-container {
+    background: #FFFFFF;
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.location, .nav {
+    display: flex;
+    align-items: center;
+}
+.location text {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width: 10rem;
+    margin-left: 20rpx;
+    color: #9A9A9A;
+    font-size: 32rpx;
+}
+.location image {
+    width: 31rpx;
+    height: 39rpx;
+}
+.location view, .distance {
+    font-size: 30rpx;
+    color: #9A9A9A;
+    margin-left: 20rpx;
+}
+.nav-btn {
+    margin-left: 20rpx;
+    height: 60rpx;
+    width: 120rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color: #BF9E4D;
+    border: 1rpx solid #BF9E4D;
+    border-radius: 8rpx;
+    font-size: 36rpx;
+}

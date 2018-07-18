@@ -1,0 +1,24 @@
+<!--pages/work_detail/work_detail.wxml-->
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" catchtap="swichNav">全部</view>
+  <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" catchtap="swichNav">剪发</view>
+  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" catchtap="swichNav">烫发</view>
+  <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" catchtap="swichNav">染发</view>
+  <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" catchtap="swichNav">造型</view>
+</view>
+
+<view class='line'></view>
+
+<view class='main-context' wx:for="{{workList}}">
+  <view class='list'>
+    <view class='work-info'>
+      <view class='work-show'>
+        <view class='work-show-name'>{{item.name}}</view>
+        <image mode="aspectFit" bindtap="imgPreview" data-src="{{item.imagePath}}" src='{{item.imagePath}}' class='work-pic'></image>
+        <view class='work-show-time'>{{item.createdate}}</view>
+        <view class='work-describe'>{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='insertline'></view>
+</view>

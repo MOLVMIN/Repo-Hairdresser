@@ -1,0 +1,149 @@
+<!--pages/hair_detail/hair_detail.wxml-->
+<!-- <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+    <block wx:for="{{imgUrls}}">
+        <swiper-item>
+            <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+    </block>
+</swiper> -->
+
+<swiper wx:if="{{hairdresserDetail.imagePathList.length > 0}}" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+  <block wx:for="{{hairdresserDetail.imagePathList}}">
+    <swiper-item>
+      <image mode='aspectFit' src="{{item}}" />
+    </swiper-item>
+  </block>
+</swiper>
+<swiper wx:elif="{{showWorkList.length > 0}}" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+  <block wx:for="{{showWorkList}}">
+    <swiper-item>
+      <image mode='aspectFit' src="{{item}}" />
+    </swiper-item>
+  </block>
+</swiper>
+<swiper wx:else indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+  <swiper-item>
+    <image mode='aspectFit' src="/imgs/no_img.jpg" />
+  </swiper-item>
+</swiper>
+
+<view class='line'></view>
+
+<view class="hair">
+  <view class="hair-info">
+    <!-- <image src='{{hairAvatar}}'></image> -->
+    <view class="hair-name">{{hairdresserDetail.name}}</view>
+    <view class="hair-phone">{{hairdresserDetail.phone}}</view>
+    <!-- <view class='wait-info'>需等待{{hairdresserDetail.needWaitCount}}人，约{{hairdresserDetail.needWaitTime}}分钟</view> -->
+  </view>
+  <view class="hair-status">
+    <view class="fans-container">
+      <view class="fans-count">{{hairdresserDetail.fansCount}}</view>
+      <view class="fans">
+        <image src="/imgs/fans_small.png"></image>
+        <view>粉丝数</view>
+      </view>
+    </view>
+    <view wx:if="{{!hairdresserDetail.isAt}}" bindtap="atEvent" class="focus-container">
+      <image src="/imgs/focus_on.png"></image>
+      <view>关注</view>
+    </view>
+    <view wx:else bindtap="ctEvent" class="focus-container">
+      <image src="/imgs/focused.png"></image>
+      <view>取消关注</view>
+    </view>
+  </view>
+</view>
+
+<view class='line'></view>
+
+<view class='Address'>
+  <view class='store_info'>
+    <view class='store_name'>{{hairdresserDetail.shopName}}</view>
+    <view class='store_more' bindtap="shopDetailEvent">
+      <view>点击进入</view>
+      <image src='/imgs/more.png'></image>
+    </view>
+  </view>
+  <view class='insertline'></view>
+  <view class="location-container">
+    <view class="location">
+      <image src="/imgs/location.png"></image>
+      <view>{{hairdresserDetail.shopAddress}}</view>
+    </view>
+    <view class="nav">
+      <view class="distance">{{hairdresserDetail.distance}}KM</view>
+      <view class="nav-btn" bindtap="navEvent">导航</view>
+    </view>
+  </view>
+</view>
+
+<view class='line'></view>
+
+<view class='works'>
+  <view class='works_info'>
+    <view class='works_title'>个人作品</view>
+    <view bindtap="workDetailEvent" class='works_more'>
+      <view>查看更多作品</view>
+      <image src='/imgs/more.png'></image>
+    </view>
+  </view>
+  <view class='insertline'></view>
+  <view style="width: 100%">
+    <scroll-view scroll-x class='works_show'>
+      <block wx:for="{{worksList}}">
+        <image mode='aspectFit' bindtap="imgPreview" data-src="{{item}}" data-srclist="{{worksList}}" src='{{item}}'></image>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+
+<view class='line'></view>
+
+<view style="padding-bottom: 120rpx">
+  <view class='evaluate-title'>
+    <view class='evaluate-title-left' wx:if="{{evaluateTotleNum != 0}}">评价({{evaluateTotleNum}})</view>
+    <view class='evaluate-title-left' wx:else>暂无评论</view>
+    <view class='evaluate-Satisfaction'>
+      <image src='/imgs/satisfaction_big.png'></image>
+      <text>满意度{{evaluateMarkAv}}%</text>
+    </view>
+  </view>
+
+  <view class='insertline'></view>
+
+  <view class="evaluate-list" wx:for="{{evaluateList}}">
+    <view class="evaluate-item">
+      <view class="evaluate-content">
+        <view class="evaluate-content-info">
+          <view class="avatar">
+            <image src="{{item.avatarImage}}"></image>
+          </view>
+          <view class="evaluate-base-info">
+            <view class="evaluate-base-info-top">
+              <view class="evaluate-name">{{item.creatorNickName}}</view>
+            </view>
+            <view class="start_level">
+              <image src='{{item.image0}}'></image>
+              <image src='{{item.image1}}'></image>
+              <image src='{{item.image2}}'></image>
+              <image src='{{item.image3}}'></image>
+              <image src='{{item.image4}}'></image>
+              <text>{{item.commitTime}}</text>
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <view class='evaluate-text'>{{item.comment}}</view>
+    </view>
+    <view class='insertline'></view>
+
+  </view>
+
+
+
+
+</view>
+
+<view class='orderBtn' bindtap='orderTapEvent'>我要预约</view>

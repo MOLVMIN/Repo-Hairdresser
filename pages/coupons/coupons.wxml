@@ -1,0 +1,37 @@
+<!--pages/coupons/coupons.wxml-->
+<view class="main-container">
+
+
+  <view wx:if="{{couponsList.length > 0}}">
+
+  <view class="coupons-list" wx:for="{{couponsList}}">
+    <view class="coupons-item">
+      <view class="coupons-left">
+        <image src='{{item.couponsLeftImage}}'></image>
+      </view>
+      <view class="coupons-center">
+        <view class="coupons-type">{{item.name}}</view>
+        <view class="coupons-content">{{item.conditions}}</view>
+        <view class="coupons-time">{{item.couponsTime}}</view>
+      </view>
+      <view class="{{item.couponsRightClass}}" data-coupondetail="{{item}}" bindtap="{{item.bindtapEvent}}">
+        <text>{{item.couponsRightText}}</text>
+      </view>
+    </view>
+  </view>
+  
+  </view>
+    <view wx:else>
+    <view class='nocouponsItem'>
+      暂无优惠券可用
+    </view>
+  </view>
+
+
+  <view style='display: {{showNoselect}}' class='bottomBtn'>
+    <view class='smallLine'></view>
+    <view class='noselectBtn' bindtap="noselectbtn">不使用优惠券</view>
+    <view class='smallLine'></view>
+  </view>
+  
+</view>

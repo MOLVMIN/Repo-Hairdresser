@@ -1,0 +1,61 @@
+<!--pages/appointment_detail/appointment_detail.wxml-->
+<view data-index="{{index}}" bindtap="appointmentItemEvent" class="waiting-container">
+    <view class="waiting-number">
+        <view class="number-text">预约号码：</view>
+        <view class="number-number">{{appointmentDetail.ordernum}}</view>
+        <!-- <image src="/imgs/more.png"></image> -->
+    </view>
+    <view class="waiting-time">
+        <!-- <view class="number-text">需等待{{appointmentDetail.needWaitCount}}人</view> -->
+        <!-- <view class="cancle-btn" data-id="{{appointmentDetail.id}}" catchtap="cancleAppointmentEvent">取消</view> -->
+    </view>
+</view>
+<view>
+    <view class="list-item-container">
+        <view class='list-item-container-content'>预约发型师</view>
+        <view class='master'>
+            <image src="{{appointmentDetail.imagePath}}"></image>
+            <text>{{appointmentDetail.hairdressName}}</text>
+        </view>
+    </view>
+    <view class='list-item-container'>
+        <view>预约门店</view>
+        <view>{{appointmentDetail.shopName}}</view>
+    </view>
+
+    <view class='list-item-container'>
+        <view>预约电话</view>
+        <view>{{appointmentDetail.phone}}</view>
+    </view>
+
+    <view class='list-item-container'>
+        <view>预约项目</view>
+        <view>{{appointmentDetail.itemNames}}</view>
+    </view>
+
+    <view class='list-item-container'>
+        <view>预计费用</view>
+        <view wx:if="{{appointmentDetail.priceValue}}">¥ {{appointmentDetail.priceValue}}</view>
+        <view wx:else>¥ {{appointmentDetail.price}}</view>
+    </view>
+
+    <view class='list-item-container'>
+        <view>预约时间</view>
+        <view>{{appointmentDetail.mkTime}}</view>
+    </view>
+
+    <view class='list-item-container'>
+        <view>支付状态</view>
+        <view wx:if="{{havePaid}}">已支付</view>
+        <view wx:else>未支付</view>
+    </view>
+
+
+    <!-- <view class='list-item-container'>
+        <view>到达时间</view>
+        <view>{{appointmentDetail.arriveTime}}</view>
+    </view> -->
+</view>
+<view wx:if="{{!havePaid}}" data-item="{{appointmentDetail}}" bindtap="balanceTapEvent" class="pay-btn">结算</view>
+
+<view wx:else data-item="{{appointmentDetail}}" bindtap="ownerInfoTapEvent" class="pay-btn">查看订单</view>

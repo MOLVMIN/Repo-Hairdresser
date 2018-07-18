@@ -1,0 +1,87 @@
+<!--pages/order/order.wxml-->
+
+<view class='main-container'>
+
+    <view class='line'></view>
+
+    <view class='info'>
+        <view class='flex_row row_item'>
+            <view class='item_bold'>发型师</view>
+            <view class='item_gray'>{{hairName}}</view>
+        </view>
+
+        <view class='smallLine'></view>
+
+        <view bindtap="itemEvent" class='flex_row row_item'>
+            <view class="order_row">
+                <view class='item_bold'>预约项目</view>
+                <view class='flex_row'>
+                    <!-- <view name='orderProj' class='item_gray'>洗剪造型</view> -->
+                    <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{itemArrayName}}">
+                <view name='orderProj' class="picker item_gray">
+                    {{itemArray[index].name}}
+                </view>
+                </picker> -->
+                    <image src='/imgs/more.png' class='more_img'></image>
+                </view>
+            </view>
+        </view>
+        <view class='smallLine'></view>
+        <view wx:if="{{itemShow}}" class="item-list">
+            <view class="item-container" data-id="{{item.id}}" data-checked="{{item.checked}}" catchtap="itemCheckedEvent" wx:for="{{items}}">
+                <view class="item-info">
+                    <image wx:if="{{!item.checked}}" src="/imgs/unchecked.png"></image>
+                    <image wx:else src="/imgs/checked.png"></image>
+                    <view class="item-name">{{item.text}}</view>
+                </view>
+                <view class="item-price">¥ {{item.price}}</view>
+            </view>
+        </view>
+
+        <view class='flex_row row_item'>
+            <view name='orderTime' class='item_bold item_time'>预约时间</view>
+            <view class='item_yellow_nobold' bindtap='memoTapEvent' data-memo='{{memo}}'>{{memo}}</view>
+        </view>
+        <view style="width: 100%">
+            <scroll-view scroll-x class='appointment-item-time'>
+                <block wx:for="{{appointmentList}}">
+                    <view data-index="{{index}}" bindtap="appointmentDateEvent" class="{{index == appointmentDate ? 'appointment-item-checked': 'appointment-item'}}">
+                        <!-- <view class="item-week">{{item.week}}</view> -->
+                        <view class="item-date">{{item.date}}</view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+        <view class="time-list">
+            <block wx:for="{{appointmentList[appointmentDate].times}}">
+                <view data-index="{{index}}" wx:if="{{item.status == '0'}}" class="{{item.isChecked? 'time-item-container-checked': 'time-item-container'}}">
+                    <view class="time-item">
+                        <view class="time">{{item.name}}</view>
+                        <view>已被预约</view>
+                    </view>
+                </view>
+                <view data-index="{{index}}" wx:elif="{{item.status == '1'}}" class="{{item.isChecked? 'time-item-container-checked': 'time-item-container'}}">
+                    <view class="time-item">
+                        <view class="time">{{item.name}}</view>
+                        <view>已过时</view>
+                    </view>
+                </view>
+                <view wx:else data-index="{{index}}" bindtap="appointmentTimeEvent" class="{{item.isChecked? 'time-item-container-checked': 'time-item-container'}}">
+                    <view class="time-item-can">
+                        <view class="time">{{item.name}}</view>
+                        <view>可预约</view>                    
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+
+    <view class='line'></view>
+    <view class='info flex_row result'>
+        <view class='item_bold'>小计</view>
+        <view name='orderMoney' class='item_yellow'>¥ {{orderPrice}}</view>
+    </view>
+</view>
+<!-- <view class='commitBtn' catchtap="commitEvent">提交订单</view> -->
+ <button class='commitBtn' open-type="getPhoneNumber" bindgetphonenumber="commitEvent" wx:if="{{!phone}}">提交订单</button> 
+<view class="commitBtn" bindtap="commitEventView" wx:else>提交订单</view>

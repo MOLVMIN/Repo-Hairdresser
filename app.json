@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/hairdressertemplete/hairdressertemplete",
+    "pages/my/my",
+    "pages/storetemplete/storetemplete",
+    "pages/map/map",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/appointment/appointment",
+    "pages/appointment_detail/appointment_detail",
+    "pages/in_service/in_service",
+    "pages/complete/complete",
+    "pages/evaluate/evaluate",
+    "pages/delete/delete",
+    "pages/store_detail/store_detail",
+    "pages/coupons/coupons",
+    "pages/evaluate_context/evaluate_context",
+    "pages/hair_detail/hair_detail",
+    "pages/coupons_detail/coupons_detail",
+    "pages/order/order",
+    "pages/balance/balance",
+    "pages/work_detail/work_detail",
+    "pages/my_focus/my_focus",
+    "pages/activity/activity",
+    "pages/activity_detail/activity_detail",
+    "pages/meted_context/meted_context"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "胡头理连锁",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#D9BA6A",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "imgs/home_sub.png",
+        "selectedIconPath": "imgs/home_sub_selected.png",
+        "text": "我要预约"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "imgs/my_sub.png",
+        "selectedIconPath": "imgs/my_sub_selected.png",
+        "text": "个人信息"
+      }
+    ]
+  }
+}

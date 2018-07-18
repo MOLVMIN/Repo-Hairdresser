@@ -1,0 +1,21 @@
+<!--pages/activity/activity.wxml-->
+<view class="main-container">
+
+  <view wx:for="{{activityList}}" wx:for-index='index'>
+    <view class="activity" catchtap='activityTapEvent' style='background-image: url({{item.imageIds[0]}});'
+ data-index='{{index}}'>
+      <view class="activity-brief">
+        <view class='activity-brief-title'>{{item.name}}</view>
+        <!-- <view class='activity-brief-context'>优惠活动详细说明优惠活动详细说明优惠活动详细说明优惠活动详细说明</view>  -->
+      </view>
+      <view class="activity-datetime">
+        <view>截止时间：{{item.deadline}}</view>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+</view>
