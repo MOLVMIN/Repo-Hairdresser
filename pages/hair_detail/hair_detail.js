@@ -27,8 +27,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id)
-    console.log(options.avatarPath)
     this.setData({
       hairdresserId: options.id,
       // hairAvatar: options.avatarPath,
@@ -165,7 +163,6 @@ Page({
         "longitude": lon
       },
       success: function (res) {
-        console.log(res)
         if (res.statusCode != 200) {
           wx.showModal({
             title: '获取发型师信息失败',
@@ -185,7 +182,6 @@ Page({
           res.data.worksInfos[i].imageId = request.host + "images/f/" + res.data.worksInfos[i].imageId
           tmpWorksList.push(res.data.worksInfos[i].imageId)
         }
-        console.log(tmpWorksList)
         
         // 将有置顶字段的全部放到数组开头
         var removedList = []
@@ -193,13 +189,11 @@ Page({
           var showWork = res.data.worksInfos[i]
           if (showWork.putop != undefined && showWork.putop === true) {
             // 删除
-            console.log(showWork)
             var removed = tmpWorksList.splice(i, 1)
             removedList.splice(i, 1, removed)
           }
         }
 
-        console.log(removedList)
         for (var i in removedList) {
           // 插入首部
           var insert = tmpWorksList.splice(0, 0, removedList[i]); 
@@ -261,7 +255,6 @@ Page({
       },
       method: "GET",
       success: function (res) {
-        console.log(res)
         if (res.statusCode != 200) {
           wx.showModal({
             title: '导航失败',
@@ -293,7 +286,6 @@ Page({
       title: '加载中…',
     })
     var that = this
-    console.log(that.data.hairdresserDetail.id)
     var token = wx.getStorageSync('token')
     app.http.request({
       url: "metes/client/hairdresser/" + that.data.hairdresserDetail.id + "/" + that.data.evaluateSize + "/" + that.data.evaluatePage,
@@ -303,7 +295,6 @@ Page({
       },
       method: "GET",
       success: function (res) {
-        console.log(res)
         wx.hideLoading()
 
         wx.stopPullDownRefresh()
@@ -349,7 +340,6 @@ Page({
           evaluateList: that.data.evaluateList.concat(res.data.rows),
           evaluatePage: that.data.evaluatePage + 1
         })
-        console.log(that.data.evaluateList)
       },
       fail: function (res) {
         wx.hideLoading()
@@ -387,7 +377,6 @@ Page({
 
       },
       success: function (res) {
-        console.log(res)
         if (res.statusCode != 200) {
           wx.showModal({
             title: '关注发型师失败',
@@ -422,7 +411,6 @@ Page({
 
       },
       success: function (res) {
-        console.log(res)
         if (res.statusCode != 200) {
           wx.showModal({
             title: '取关发型师失败',

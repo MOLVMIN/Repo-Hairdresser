@@ -292,11 +292,11 @@ Page({
 
   locateStoreList: function (keyStr, lon, lat) {
     var that = this
-    console.log(keyStr)
-    console.log(lon)
-    console.log(lat)
-    console.log(that.data.pageSize)
-    console.log(that.data.storePage)
+    // console.log(keyStr)
+    // console.log(lon)
+    // console.log(lat)
+    // console.log(that.data.pageSize)
+    // console.log(that.data.storePage)
     wx.showLoading({
       title: '加载中…',
     })
@@ -357,7 +357,6 @@ Page({
           storeList: that.data.storeList.concat(tmpStoreList),
           storePage: that.data.storePage + 1
         })
-        console.log(that.data.storeList)
       },
       fail: function (res) {
         wx.hideLoading()
@@ -382,11 +381,11 @@ Page({
 
   locateHairList: function (keyStr, lon, lat) {
     var that = this
-    console.log(keyStr)
-    console.log(lon)
-    console.log(lat)
-    console.log(that.data.pageSize)
-    console.log(that.data.hairPage)
+    // console.log(keyStr)
+    // console.log(lon)
+    // console.log(lat)
+    // console.log(that.data.pageSize)
+    // console.log(that.data.hairPage)
     wx.showLoading({
       title: '加载中…',
     })
@@ -443,7 +442,6 @@ Page({
           hairdresserList: that.data.hairdresserList.concat(res.data.rows),
           hairPage: that.data.hairPage + 1
         })
-        console.log(that.data.hairdresserList)
       },
       fail: function (res) {
         wx.hideLoading()
@@ -459,7 +457,6 @@ Page({
         isCanloadStore: true,
         storeSearchText: e.detail.value
       })
-      console.log("store5")
       this.getStoreList(e.detail.value)
     } else if (this.data.currentTab == "right") {
       this.setData({
@@ -474,7 +471,6 @@ Page({
 
   createWxInfo: function () {
     var that = this
-    console.log(app.globalData.userInfo)
     var token = wx.getStorageSync('token')
     app.http.request({
       url: "users/wx",
@@ -562,9 +558,6 @@ Page({
       })
       return
     }
-
-    console.log(this.data.currentId)
-    console.log(this.data.currentCcode)
     this.serviceBtn(this.data.currentId, this.data.currentCcode)
   },
 

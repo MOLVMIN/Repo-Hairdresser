@@ -8,7 +8,7 @@
             </view>
         </view>-->
   <view class="store-list-container">
-    <view class="store-list" wx:for="{{storeList}}">
+    <view class="store-list" wx:for="{{storeList}}" wx:key="{{index}}">
       <view class="store-list-item">
         <view class="title">
           <text class="store-name">{{item.name}}</text>

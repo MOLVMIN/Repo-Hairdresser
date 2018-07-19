@@ -19,7 +19,6 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (loginCode.code) {
           var code = loginCode.code
-          console.log(loginCode.code)
           that.http.request({
             url: "auth/" + code,
             header: {
@@ -29,7 +28,6 @@ App({
             },
             method: "GET",
             success: function (res) {
-              console.log(res)
 
               if (res.statusCode != 200) {
                 console.log("鉴权失败")
@@ -48,7 +46,6 @@ App({
                 newtoken = res.header.Authorization.split(" ")[1]
               }
               wx.setStorageSync('token', newtoken)
-              console.log(newtoken)
               if (that.tokenInfoReadyCallback) {
                 that.tokenInfoReadyCallback(res)
               }
@@ -102,7 +99,6 @@ App({
         }
 
         wx.setStorageSync('token', newtoken)
-        console.log(newtoken)
         if (that.refreshTokenInfoReady) {
           that.refreshTokenInfoReady(res)
         }
@@ -131,7 +127,6 @@ App({
       },
       method: "GET",
       success: function (res) {
-        console.log(res)
 
         if (res.statusCode != 200) {
           console.log("刷新token失败")
@@ -151,7 +146,6 @@ App({
         }
 
         wx.setStorageSync('token', newtoken)
-        console.log(newtoken)
       },
       fail: function (res) {
         console.log("fail:" + res)
