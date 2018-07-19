@@ -275,15 +275,16 @@ Page({
 
   gotoStore: function (e) {
     console.log('gotoStore')
+    console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '../../pages/store_detail/store_detail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title
+      url: '../../pages/store_detail/store_detail?id=' + e.currentTarget.dataset.id
     })
   },
 
   gotoHairdresser: function (e) {
     console.log('gotoHairdresser')
     wx.navigateTo({
-      url: '../../pages/hair_detail/hair_detail?id=' + e.currentTarget.dataset.id + '&avatarPath=' + e.currentTarget.dataset.path
+      url: '../../pages/hair_detail/hair_detail?id=' + e.currentTarget.dataset.id
     })
   }
 })

@@ -29,9 +29,7 @@ Page({
       storeId: options.id,
       options: options
     })
-    wx.setNavigationBarTitle({
-      title: options.title,
-    })
+
     var that = this
     var token = wx.getStorageSync('token')
     if (!token || token == "") {
@@ -158,7 +156,10 @@ Page({
           })
           return;
         }
-        res.data = util.jsonOptimize(res.data)
+        console.log(res.data)
+        wx.setNavigationBarTitle({
+          title: res.data.name,
+        })
         var imagePathList = []
         for (var i in res.data.imageIds) {
           imagePathList[i] = app.http.host + 'images/f/' + res.data.imageIds[i]

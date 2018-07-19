@@ -214,7 +214,7 @@ return
     var that = this
     var token = wx.getStorageSync('token')
     app.http.request({
-      url: "metes",
+      url: "metes/crt",
       header: {
         'content-type': 'application/json',
         'authorization': "Bearer " + token,

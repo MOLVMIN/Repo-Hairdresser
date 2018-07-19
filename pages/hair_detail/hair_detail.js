@@ -185,19 +185,21 @@ Page({
           res.data.worksInfos[i].imageId = request.host + "images/f/" + res.data.worksInfos[i].imageId
           tmpWorksList.push(res.data.worksInfos[i].imageId)
         }
+        console.log(tmpWorksList)
         
-
         // 将有置顶字段的全部放到数组开头
         var removedList = []
         for (var i in res.data.worksInfos) {
           var showWork = res.data.worksInfos[i]
-          if (showWork.putop == true) {
+          if (showWork.putop != undefined && showWork.putop === true) {
             // 删除
+            console.log(showWork)
             var removed = tmpWorksList.splice(i, 1)
-            removedList.push(removed)
+            removedList.splice(i, 1, removed)
           }
         }
 
+        console.log(removedList)
         for (var i in removedList) {
           // 插入首部
           var insert = tmpWorksList.splice(0, 0, removedList[i]); 
@@ -220,7 +222,6 @@ Page({
         wx.setNavigationBarTitle({
           title: res.data.shopName + '-' + res.data.name,
         })
-        console.log(that.data.hairdresserDetail)
 
         that.getEvaluateList()
       }
