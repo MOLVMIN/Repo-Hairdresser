@@ -15,11 +15,11 @@
   </view>
 
   <view class='instruction'>
-   <view>使用规则</view>
+   <view class='instr_detail'>使用规则</view>
    <view class='instr_detail'>适用门店: {{couponDetail.shopNameList}}</view>
    <view class='instr_detail'>适用项目: {{couponDetail.itemNameList}}</view>
    <view class='instr_detail'>优惠详情: {{couponDetail.conditions}}</view>
-   <view class='instr_detail'>抵用金额: {{couponDetail.price}}</view>
+   <view class='instr_detail' wx:if="{{couponDetail.price}}">抵用金额: {{couponDetail.price}}元</view>
    <view class='instr_detail'>有效期: {{couponDetail.deadline}}</view>
   </view>
 

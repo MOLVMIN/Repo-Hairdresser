@@ -23,6 +23,9 @@ Page({
     couponsImage: '/imgs/coupons.png',
     storeImage: '/imgs/storelight.png',
     hairImage: '/imgs/hair.png',
+    isStoreLoading: false,
+    isHairLoading: false,
+    isWxInfoLoading: false,
     showModal: false,
   },
 
@@ -47,9 +50,6 @@ Page({
       app.getTokenInfo()
       app.tokenInfoReadyCallback = res => {
         that.getWxInfo()
-
-        that.getStoreList()
-        that.getHairdresserList()
       }
     }
     else {
@@ -57,9 +57,6 @@ Page({
       app.refreshTokenInfoReady = res => {
         console.log("onLoad refreshTokenInfo")
         that.getWxInfo()
-
-        that.getStoreList()
-        that.getHairdresserList()
       }
     }
   },
@@ -79,6 +76,9 @@ Page({
             // 可以将 res 发送给后台解码出 unionId
             app.globalData.userInfo = res.userInfo
             that.createWxInfo()
+
+            that.getStoreList()
+            that.getHairdresserList()
           },
           fail: res => {
             console.log(res)
@@ -146,6 +146,7 @@ Page({
         couponsImage: '/imgs/coupons.png',
         storeImage: '/imgs/storelight.png',
         hairImage: '/imgs/hair.png',
+        showModal: false,
       })
       that.onLoad(that.data.options)
 
@@ -292,11 +293,18 @@ Page({
 
   locateStoreList: function (keyStr, lon, lat) {
     var that = this
-    // console.log(keyStr)
-    // console.log(lon)
-    // console.log(lat)
-    // console.log(that.data.pageSize)
-    // console.log(that.data.storePage)
+    if (that.data.isStoreLoading == true) {
+      return
+    } else {
+      that.setData({
+        isStoreLoading:true
+      })
+    }
+    console.log(keyStr)
+    console.log(lon)
+    console.log(lat)
+    console.log(that.data.pageSize)
+    console.log(that.data.storePage)
     wx.showLoading({
       title: '加载中…',
     })
@@ -360,7 +368,12 @@ Page({
       },
       fail: function (res) {
         wx.hideLoading()
-      }
+      },
+      complete: function() {
+        that.setData({
+          isStoreLoading: false
+        })
+      },
     })
   },
 
@@ -381,11 +394,18 @@ Page({
 
   locateHairList: function (keyStr, lon, lat) {
     var that = this
-    // console.log(keyStr)
-    // console.log(lon)
-    // console.log(lat)
-    // console.log(that.data.pageSize)
-    // console.log(that.data.hairPage)
+    if (that.data.isHairLoading == true) {
+      return
+    } else {
+      that.setData({
+        isHairLoading: true
+      })
+    }
+    console.log(keyStr)
+    console.log(lon)
+    console.log(lat)
+    console.log(that.data.pageSize)
+    console.log(that.data.hairPage)
     wx.showLoading({
       title: '加载中…',
     })
@@ -442,10 +462,16 @@ Page({
           hairdresserList: that.data.hairdresserList.concat(res.data.rows),
           hairPage: that.data.hairPage + 1
         })
+        console.log(that.data.hairdresserList)
       },
       fail: function (res) {
         wx.hideLoading()
-      }
+      },
+      complete: function () {
+        that.setData({
+          isHairLoading: false
+        })
+      },
     })
   },
 
@@ -471,6 +497,14 @@ Page({
 
   createWxInfo: function () {
     var that = this
+    if (that.data.isWxInfoLoading == true) {
+      return
+    } else {
+      that.setData({
+        isWxInfoLoading: true
+      })
+    }
+    console.log(app.globalData.userInfo)
     var token = wx.getStorageSync('token')
     app.http.request({
       url: "users/wx",
@@ -507,7 +541,12 @@ Page({
       },
       fail: function (res) {
         console.log("fail:" + res)
-      }
+      },
+      complete: function () {
+        that.setData({
+          isWxInfoLoading: false
+        })
+      },
     })
   },
 

@@ -10,7 +10,12 @@ Page({
     appointmentDetail: {},
     onPay: false,
     havePaid: false,
+    isNormalClose: false,
+    isUnload: false,
     options: {},
+
+    remainTime: '',
+    currentTime: 90,
   },
 
   /**
@@ -38,6 +43,8 @@ Page({
     this.setData({
       appointmentDetail: appointmentDetailJson
     })
+
+    this.count_down()
   },
 
   /**
@@ -65,7 +72,22 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that = this
+    that.setData({
+      isUnload: true
+    })
+    if (that.data.isNormalClose == false) {
+      var token = wx.getStorageSync('token')
+      app.http.request({
+        url: "orders/cancel/" + that.data.appointmentDetail.id,
+        header: {
+          'content-type': 'application/json',
+          'Authorization': "Bearer " + token,
+        },
+        data: {},
+        method: "DELETE",
+      })
+    }
   },
 
   /**
@@ -81,6 +103,8 @@ Page({
         appointmentDetail: {},
         onPay: false,
         havePaid: false,
+        isNormalClose: false,
+        isUnload: false,
       })
       that.onLoad(that.data.options)
 
@@ -163,8 +187,11 @@ Page({
   balanceTapEvent: function (e) {
     console.log(e.currentTarget.dataset.item)
     var inServiceStr = util.jsonToStr(e.currentTarget.dataset.item)
+    this.setData({
+      isNormalClose: true,
+    })
     wx.redirectTo({
-      url: '../../pages/balance/balance?inServiceOrder=' + inServiceStr
+      url: '../../pages/balance/balance?inServiceOrder=' + inServiceStr + '&currentTime=' + this.data.currentTime
     })
   }, 
 
@@ -176,5 +203,70 @@ Page({
     wx.switchTab({
       url: '/pages/my/my',
     })
-  }
+  },
+
+  /* 毫秒级倒计时 */
+  count_down: function () {
+    var that = this
+    var currentTime = that.data.currentTime
+    that.setData({
+      remainTime: currentTime + '秒',
+      currentTime: currentTime,
+    })
+    var interval = setInterval(function () {
+      currentTime--;
+      if (currentTime < 0) {
+        return
+      }
+      that.setData({
+        remainTime: currentTime + '秒',
+        currentTime: currentTime,
+      })
+      if (currentTime <= 0) {
+        clearInterval(interval)
+        console.log('appointment_detail_overtime')
+        // that.setData({
+        //   // time: '支付超时',
+        //   // currentTime: 61,
+        //   // disabled: false
+        // })
+        if (that.data.isUnload == true) {
+          return
+        }
+
+        // 请求预约失效
+        var token = wx.getStorageSync('token')
+        app.http.request({
+          url: "orders/cancel/" + that.data.appointmentDetail.id,
+          header: {
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + token,
+          },
+          data: {},
+          method: "DELETE",
+          success: function (res) {
+          },
+          fail: function (res) {
+          },
+          complete: function () {
+            wx.showModal({
+              title: '支付超时',
+              content: '请重新预约',
+              showCancel: false,
+              success: function (res) {
+                that.setData({
+                  isNormalClose: true,
+                })
+                // 退回上个页面
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            })
+          },
+        })
+
+      }
+    }, 1000)
+  },
 })

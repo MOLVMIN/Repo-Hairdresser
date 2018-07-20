@@ -50,6 +50,10 @@
         <view wx:else>未支付</view>
     </view>
 
+  <view class='list-item-container'>
+    <view>支付剩余时间：</view>
+    <view style="color:red;font-weight:bold;">{{remainTime}}</view>
+  </view>
 
     <!-- <view class='list-item-container'>
         <view>到达时间</view>

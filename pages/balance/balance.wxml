@@ -1,10 +1,10 @@
 <!--pages/balance/balance.wxml-->
 <view class='main-container'>
 
-  <!-- <view class='info flex_row row_item2'>
+  <view class='info flex_row row_item2'>
     <view class='item_bold'>支付剩余时间：</view>
     <view class='item_time'>{{remainTime}}</view>
-  </view> -->
+  </view>
 
   <view class='line'></view>
 

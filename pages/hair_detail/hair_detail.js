@@ -182,25 +182,30 @@ Page({
           res.data.worksInfos[i].imageId = request.host + "images/f/" + res.data.worksInfos[i].imageId
           tmpWorksList.push(res.data.worksInfos[i].imageId)
         }
-        
+
         // 将有置顶字段的全部放到数组开头
         var removedList = []
         for (var i in res.data.worksInfos) {
           var showWork = res.data.worksInfos[i]
           if (showWork.putop != undefined && showWork.putop === true) {
             // 删除
-            var removed = tmpWorksList.splice(i, 1)
-            removedList.splice(i, 1, removed)
+            tmpWorksList.splice(i, 1)
+            removedList.push(res.data.worksInfos[i].imageId)
           }
         }
+
+        console.log(removedList)
 
         for (var i in removedList) {
           // 插入首部
           var insert = tmpWorksList.splice(0, 0, removedList[i]); 
         }
 
+        console.log(tmpWorksList)
+
         // 取前5条数据
         var tmpShowWorkList = []
+        var tmpShowWorkList_complete = []
         for (var i = 0; i < 5; i++) {
           var showWork = tmpWorksList[i]
           if (!util.isNull(showWork)) {

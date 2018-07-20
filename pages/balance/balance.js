@@ -19,13 +19,15 @@ Page({
     inServiceOrder: {},
     couponValue: 0,
     couponNum: '',
-    options: {},
     showCoupons:'none',
     couponsCode: '',
     couponsCodeStyle: '',
+    isNormalClose: false,
+    isUnload: false,
+    options: {},
 
     remainTime: '',
-    currentTime: 91
+    currentTime: 90
   },
 
   /**
@@ -33,11 +35,14 @@ Page({
    */
   onLoad: function (options) {
     console.log(util.strToJson(options.inServiceOrder))
+    console.log('testaa')
+    console.log(options.currentTime)
     this.setData({
       shopName: options.shopName,
       itemName: options.itemName,
       hairName: options.hairName,
       inServiceOrder: util.strToJson(options.inServiceOrder),
+      currentTime: options.currentTime,
       options: options
     })
     this.setData({
@@ -55,7 +60,7 @@ Page({
 
     this.getCouponsCount()
 
-    // this.count_down()
+    this.count_down()
   },
 
   /**
@@ -83,7 +88,22 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that = this
+    that.setData({
+      isUnload: true
+    })
+    if (that.data.isNormalClose == false) {
+      var token = wx.getStorageSync('token')
+      app.http.request({
+        url: "orders/cancel/" + that.data.inServiceOrder.id,
+        header: {
+          'content-type': 'application/json',
+          'Authorization': "Bearer " + token,
+        },
+        data: {},
+        method: "DELETE",
+      })
+    }
   },
 
   /**
@@ -108,8 +128,15 @@ Page({
         inServiceOrder: {},
         couponValue: 0,
         couponNum: '',
+        showCoupons: 'none',
+        couponsCode: '',
+        couponsCodeStyle: '',
+        isNormalClose: false,
+        isUnload: false,
       })
-      that.onLoad(that.data.options)
+      var oldOpt = that.data.options
+      oldOpt.currentTime = that.data.currentTime
+      that.onLoad(oldOpt)
 
       // complete
       wx.hideNavigationBarLoading() //完成停止加载
@@ -199,11 +226,16 @@ Page({
           console.log(res.data)
           if (res.data.package == 'prepay_id=wx0000000000000000000000000000000000') {
             var appointmentDetailStr = util.jsonToStr(that.data.inServiceOrder)
-            wx.redirectTo({
-              url: '../../pages/appointment_detail/appointment_detail?havePaid=true&appointmentDetail=' + appointmentDetailStr,
-            })            
             that.setData({
-              onPay: false
+              onPay: false,
+              isNormalClose: true,
+            })
+            // wx.redirectTo({
+            //   url: '../../pages/appointment_detail/appointment_detail?havePaid=true&appointmentDetail=' + appointmentDetailStr,
+            // })
+            // 退回上个页面
+            wx.navigateBack({
+              delta: 1
             })
           } else {
             wx.requestPayment({
@@ -216,8 +248,15 @@ Page({
                 console.log('requestPayment suc')
                 console.log(that.data.inServiceOrder)
                 var appointmentDetailStr = util.jsonToStr(that.data.inServiceOrder)
-                wx.redirectTo({
-                  url: '../../pages/appointment_detail/appointment_detail?havePaid=true&appointmentDetail=' + appointmentDetailStr,
+                that.setData({
+                  isNormalClose: true,
+                })
+                // wx.redirectTo({
+                //   url: '../../pages/appointment_detail/appointment_detail?havePaid=true&appointmentDetail=' + appointmentDetailStr,
+                // })
+                // 退回上个页面
+                wx.navigateBack({
+                  delta: 1
                 })
               },
               'fail': function (res) {
@@ -318,17 +357,65 @@ Page({
   count_down: function () {
     var that = this
     var currentTime = that.data.currentTime
+    that.setData({
+      remainTime: currentTime + '秒',
+      currentTime: currentTime,
+    })
     var interval = setInterval(function () {
-      currentTime--;
+      if (that.data.onPay == false) {
+        currentTime--;
+      }
+      if (currentTime < 0) {
+        return
+      }
       that.setData({
-        remainTime: currentTime + '秒'
+        remainTime: currentTime + '秒',
+        currentTime: currentTime,
       })
       if (currentTime <= 0) {
         clearInterval(interval)
-        that.setData({
-          // time: '支付超时',
-          // currentTime: 61,
-          // disabled: false
+        // that.setData({
+        //   // time: '支付超时',
+        //   // currentTime: 61,
+        //   // disabled: false
+        // })
+
+        console.log('balance_overtime')
+
+        if (that.data.isUnload == true) {
+          return
+        }
+
+        // 请求预约失效
+        var token = wx.getStorageSync('token')
+        app.http.request({
+          url: "orders/cancel/" + that.data.inServiceOrder.id,
+          header: {
+            'content-type': 'application/json',
+            'Authorization': "Bearer " + token,
+          },
+          data: {},
+          method: "DELETE",
+          success: function (res) {
+          },
+          fail: function (res) {
+          },
+          complete: function () {
+            wx.showModal({
+              title: '支付超时',
+              content: '请重新预约',
+              showCancel: false,
+              success: function (res) {
+                that.setData({
+                  isNormalClose: true,
+                })
+                // 退回上个页面
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            })
+          },
         })
       }
     }, 1000)  

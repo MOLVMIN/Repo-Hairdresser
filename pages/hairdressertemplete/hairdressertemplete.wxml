@@ -30,5 +30,6 @@
         <!-- <view class="wait-status">需要等待{{item.needWaitCount}}人</view> -->
       </view>
     </view>
+    <view wx:if="{{hairdresserList.length==0}}" class='nodata'>您附近暂时没有发型师</view>
   </view>
 </template>
